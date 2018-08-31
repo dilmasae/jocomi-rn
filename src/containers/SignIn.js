@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {
     View,
-    Button
 } from 'react-native';
+
+import { Layout } from '@common';
+
+import { Button } from 'react-native-elements';
 
 class SignIn extends Component {
 
@@ -10,19 +13,21 @@ class SignIn extends Component {
         header: null
     }
 
-    _renderContent = () => {
-        return(
-            <Button
-                title="Go to home"
-                onPress={() => this.props.navigation.navigate('HomeStack')}
-            />
-        );
-    }
-
     render() {
         return(
             <View style={{flex: 1, justifyContent: 'center'}}>
-                {this._renderContent()}
+                <Button
+                    title="Go to home"
+                    backgroundColor="#FF4242"
+                    onPress={() => this.props.navigation.navigate('HomeStack')}
+                />
+
+                <Button
+                    title="Register"
+                    backgroundColor="#413D3D"
+                    onPress={() => this.props.navigation.navigate('SignUp')}
+                    style={Layout.separatorY}
+                />
             </View>
         )
     }

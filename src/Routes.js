@@ -7,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
  */
 import {
     SignIn,
+    SignUp,
     Home,
     AuthLoadingScreen,
     Settings,
@@ -84,7 +85,8 @@ const TabStack = createBottomTabNavigator(
 );
 
 const AuthStack = createStackNavigator({
-    SignIn: SignIn
+    SignIn: SignIn,
+    SignUp: SignUp,
 });
 
 const SwitchNavigator = createSwitchNavigator(
