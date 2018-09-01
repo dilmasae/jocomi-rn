@@ -79,7 +79,18 @@ const TabStack = createBottomTabNavigator(
 
         tabBarOptions: {
             activeTintColor: 'tomato',
+            activeBackgroundColor: 'transparent',
             inactiveTintColor: 'gray',
+            inactiveBackgroundColor: 'transparent',
+            showLabel: false,
+            style: {
+                backgroundColor: 'white',
+                // borderTopColor: 'transparent',
+            },
+            // labelStyle: {
+                //fontSize: 12,
+            //},
+            tabStyle: {},
         },
     }
 );
