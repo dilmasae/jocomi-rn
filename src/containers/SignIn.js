@@ -7,6 +7,8 @@ import { Layout } from '@common';
 
 import { Button } from 'react-native-elements';
 
+import { strings } from '@locales';
+
 class SignIn extends Component {
 
     static navigationOptions = {
@@ -23,7 +25,7 @@ class SignIn extends Component {
                 />
 
                 <Button
-                    title="Register"
+                    title={strings('register')}
                     backgroundColor="#413D3D"
                     onPress={() => this.props.navigation.navigate('SignUp')}
                     style={Layout.separatorY}
