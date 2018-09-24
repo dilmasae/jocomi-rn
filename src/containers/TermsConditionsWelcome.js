@@ -17,15 +17,15 @@ const avatarDefault="../media/avatar.png";
 
 class TermsConditionsWelcome extends Component {
 
-    constructor(props) {
-        super(props);
+    static navigationOptions = {
+        header: null
+    }
 
-        this.state = {
-            photo: "",
-            userName: "",
-            phoneNumber: "",
-            companyName: "",
-        }
+    state = {
+        photo: "",
+        userName: "",
+        phoneNumber: "",
+        companyName: "",
     }
 
     getAvatar() {
@@ -37,10 +37,7 @@ class TermsConditionsWelcome extends Component {
     }
 
     toggleError() {
-    }
 
-    static navigationOptions = {
-        header: null
     }
 
     render() {

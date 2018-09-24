@@ -17,22 +17,19 @@ const avatarDefault="../media/avatar.png";
 
 class TermsConditionsWelcome2 extends Component {
 
-    constructor(props) {
-        super(props);
+    static navigationOptions = {
+        header: null
+    }
 
-        this.state = {
-            photo: this.props.navigation.state.params.photo,
-            userName: this.props.navigation.state.params.userName,
-            phoneNumber: this.props.navigation.state.params.phoneNumber,
-            companyName: this.props.navigation.state.params.companyName,
-        }
+    state = {
+        photo: this.props.navigation.state.params.photo,
+        userName: this.props.navigation.state.params.userName,
+        phoneNumber: this.props.navigation.state.params.phoneNumber,
+        companyName: this.props.navigation.state.params.companyName,
     }
 
     toggleError() {  
-    }
-
-    static navigationOptions = {
-        header: null
+        
     }
 
     getAvatar() {

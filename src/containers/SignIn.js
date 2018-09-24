@@ -13,19 +13,19 @@ import {
     Input,
 } from 'react-native-elements';
 
+import { strings } from '@locales';
+
 class SignIn extends Component {
 
-    constructor(props) {
-        super(props);
+    static navigationOptions = {
+        header: null
+    }
 
-        let { value } = this.props;
-
-        this.state = {
-            id_card: value,
-            password: value,
-            id_cardErrorMessage: 'This field is required',
-            passwordErrorMessage: 'This field is required',
-        }
+    state = {
+        id_card: this.props.value,
+        password: this.props.value,
+        id_cardErrorMessage: 'This field is required',
+        passwordErrorMessage: 'This field is required',
     }
 
     _getDisabled() {
@@ -48,10 +48,7 @@ class SignIn extends Component {
     }
 
     toggleError() {
-    }
 
-    static navigationOptions = {
-        header: null
     }
 
     render() {
@@ -69,9 +66,9 @@ class SignIn extends Component {
                     inputStyle={styles.textInput}
                     leftIcon={
                         <Icon
-                        name='person'
-                        size={24}
-                        color='black'
+                            name='person'
+                            size={24}
+                            color='black'
                         />
                     }
                     errorStyle={styles.error}
@@ -88,9 +85,9 @@ class SignIn extends Component {
                     inputStyle={styles.textInput}
                     leftIcon={
                         <Icon
-                        name='vpn-key'
-                        size={24}
-                        color='black'
+                            name='vpn-key'
+                            size={24}
+                            color='black'
                         />
                     }
                     errorStyle={styles.error}
@@ -100,16 +97,16 @@ class SignIn extends Component {
 
                 <Button
                     disabled={this._getDisabled()}
-                    title="SIGN IN"
+                    title={strings('SIGN_IN')}
                     backgroundColor="#FF4242"
                     onPress={() => this.props.navigation.navigate('TermsConditionsWelcome')}
                     style={Layout.separatorY}
                     buttonStyle={styles.button}
                 />
 
-                <Text
-                    style={styles.text}
-                >Forget Password?</Text>
+                <Text style={styles.text}>
+                    {strings('FORGET_PASSWORD')}
+                </Text>
 
             </View>
         )
