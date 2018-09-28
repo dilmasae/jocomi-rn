@@ -1,3 +1,7 @@
 {
-    "register": "registro"
+    "FORGET_PASSWORD": "¿Olvidó contraseña?",
+    "idCard": "ID Card",
+    "Password": "Password",
+    "SIGN_IN": "REGISTRO",
+    "signinErrorMessage": "Este campo es requerido"
 }

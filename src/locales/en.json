@@ -1,4 +1,7 @@
 {
+    "FORGET_PASSWORD": "Forget Password?",
+    "idCard": "ID Card",
+    "Password": "Password",
     "SIGN_IN": "SIGN IN",
-    "FORGET_PASSWORD": "Forget Password?"
+    "signinErrorMessage": "This field is required"    
 }

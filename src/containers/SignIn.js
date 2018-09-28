@@ -5,7 +5,11 @@ import {
     View,
 } from 'react-native';
 
-import { Layout } from '@common';
+import { 
+    Layout, 
+    IconName,
+    Color
+} from '@common';
 
 import { 
     Button, 
@@ -22,27 +26,37 @@ class SignIn extends Component {
     }
 
     state = {
-        id_card: this.props.value,
+        idCard: this.props.value,
         password: this.props.value,
-        id_cardErrorMessage: 'This field is required',
-        passwordErrorMessage: 'This field is required',
+        idCardErrorMessage: null,
+        passwordErrorMessage: null,
     }
 
-    _getDisabled() {
+    _idCardErrorMessage() {
+        if(!this.state.idCard || this.state.idCard.length <=0){
+            this.setState({idCardErrorMessage: strings('signinErrorMessage')});
+        }else {
+            this.setState({idCardErrorMessage: null});
+        }
+    }
+
+    _passwordErrorMessage() {
+        if(!this.state.password || this.state.password.length <=5){
+            this.setState({passwordErrorMessage: strings('signinErrorMessage')});
+        }else {
+            this.setState({passwordErrorMessage: null});
+        }
+    }
+
+    getDisabled() {
         let disabled = false;
         
-        if(!this.state.id_card || this.state.id_card.length <=0){
+        if(!this.state.idCard || this.state.idCard.length <=0){
             disabled = true;
-            this.state.id_cardErrorMessage = 'This field is required';
-        }else {
-            this.state.id_cardErrorMessage = ' ';
         }
             
         if(!this.state.password || this.state.password.length <=5){
             disabled = true;
-            this.state.passwordErrorMessage = 'This field is required';
-        }else {
-            this.state.passwordErrorMessage = ' ';
         }
         return disabled;
     }
@@ -58,47 +72,52 @@ class SignIn extends Component {
                 <Text h3 style={styles.title}>Sign in</Text>
 
                 <Input
-                    label='ID Card'
+                    label={strings('idCard')}
                     labelStyle={styles.text}
-                    placeholder='ID Card'
-                    onChangeText={(id_card) => this.setState({id_card})}
+                    placeholder={strings('idCard')}
+                    onChangeText={(idCard) => {
+                        this.setState({idCard})
+                        this._idCardErrorMessage()
+                    }}
                     value={this.state.id_card}
                     inputStyle={styles.textInput}
                     leftIcon={
                         <Icon
-                            name='person'
+                            name={IconName.USER}
                             size={24}
                             color='black'
                         />
                     }
                     errorStyle={styles.error}
-                    errorMessage={this.state.id_cardErrorMessage}
+                    errorMessage={this.state.idCardErrorMessage}
                 />
 
                 <Input
-                    label='Password'
+                    label={strings('Password')}
                     labelStyle={styles.text}
-                    placeholder='Password'
+                    placeholder={strings('Password')}
                     secureTextEntry={true}
-                    onChangeText={(password) => this.setState({password})}
+                    onChangeText={(password) => {
+                        this.setState({password})
+                        this._passwordErrorMessage()
+                    }}
                     value={this.state.password}
                     inputStyle={styles.textInput}
                     leftIcon={
                         <Icon
-                            name='vpn-key'
+                            name={IconName.PASSWORD}
                             size={24}
                             color='black'
                         />
                     }
                     errorStyle={styles.error}
                     errorMessage={this.state.passwordErrorMessage}
-                    
                 />
 
                 <Button
-                    disabled={this._getDisabled()}
+                    disabled={this.getDisabled()}
                     title={strings('SIGN_IN')}
-                    backgroundColor="#FF4242"
+                    backgroundColor={Color.grey}
                     onPress={() => this.props.navigation.navigate('TermsConditionsWelcome')}
                     style={Layout.separatorY}
                     buttonStyle={styles.button}
@@ -117,20 +136,20 @@ const styles = StyleSheet.create({
 
     button: {
         borderRadius: 12,
-        backgroundColor: "#9370DB",
+        backgroundColor: Color.primary,
         width: 300
     },
     h3: {
         textAlign: "right"
     },
     error: {
-        color: 'red',
+        color: Color.red,
         marginLeft: 20
     },
     text: {
         textAlign: "center",
         marginTop: 15,
-        color: "#9370DB",
+        color: Color.primary,
         fontSize: 15
     },
     textInput: {
