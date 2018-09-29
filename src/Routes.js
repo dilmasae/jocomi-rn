@@ -11,6 +11,8 @@ import {
     Home,
     AuthLoadingScreen,
     Settings,
+    TermsConditionsWelcome,
+    TermsConditionsWelcome2,
 } from '@containers';
 
 /*
@@ -98,6 +100,8 @@ const TabStack = createBottomTabNavigator(
 const AuthStack = createStackNavigator({
     SignIn: SignIn,
     SignUp: SignUp,
+    TermsConditionsWelcome: TermsConditionsWelcome,
+    TermsConditionsWelcome2: TermsConditionsWelcome2,
 });
 
 const SwitchNavigator = createSwitchNavigator(
