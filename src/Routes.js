@@ -24,6 +24,8 @@ import {
     createBottomTabNavigator,
 } from 'react-navigation';
 
+import { AppNavigator } from 'react-native-navigation-actions';
+
 /*
  * REDUX
  */
@@ -124,10 +126,12 @@ const SwitchNavigator = createSwitchNavigator(
     }
 );
 
+const AppNav = AppNavigator(SwitchNavigator);
+
 const Routes = () => {
     return(
         <Provider store={store}>
-            <SwitchNavigator />
+            <AppNav />
         </Provider>
     )
 }

@@ -28,17 +28,20 @@ export default class Api {
                     // store.dispatch(actionCreators.log_out())
                     break;
                 case 404:
-                    
+                    console.warn("404");
                     break;
                 default:
-                    
+                    console.warn("GENERIC ERROR");
                     break;
             }
         });
     }
 
-    // fetchCustomPost(customPost = '', q = '') {
-    //     return this.axios.get(`/wp-json/wp/v2/${customPost}?search=${q}&_embed`);
-    // }
+    login(idCard, password) {
+        return this.axios.post(`/auth/login`, {
+            email: idCard,
+            password: password
+        });
+    }
 
 }

@@ -15,6 +15,9 @@ import {
 
 const avatarDefault="../media/avatar.png";
 
+import * as actionCreators from '@actions';
+import {connect} from 'react-redux';
+
 class TermsConditionsWelcome2 extends Component {
 
     static navigationOptions = {
@@ -99,7 +102,7 @@ class TermsConditionsWelcome2 extends Component {
                     iconRight
                     title="Accept terms and conditions"
                     backgroundColor="#FF4242"
-                    onPress={() => this.props.navigation.navigate('HomeStack')}
+                    onPress={() => this.props.dispatch(actionCreators.accept_terms())}
                     style={Layout.separatorY}
                     buttonStyle={styles.button}
                 />
@@ -163,4 +166,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default TermsConditionsWelcome2;
+export default connect()(TermsConditionsWelcome2);

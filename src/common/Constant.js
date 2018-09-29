@@ -1,6 +1,6 @@
 const isDev = __DEV__;
 
-const URL = isDev ? 'https://www.jocomi-api.herokuapp.com' : 'https://www.jocomi-api.herokuapp.com';
+const URL = isDev ? 'https://jocomi-test.herokuapp.com/api/v1' : 'https://jocomi-test.herokuapp.com/api/v1';
 
 const Constant = {
     URL,

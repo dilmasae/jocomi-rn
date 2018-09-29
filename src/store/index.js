@@ -1,5 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import allReducers from '../reducers';
+import {persistStore} from 'redux-persist';
 
-export default createStore(allReducers, applyMiddleware(ReduxThunk));
+let store = createStore(allReducers, applyMiddleware(ReduxThunk));
+let persistor = persistStore(store);
+
+export default store;

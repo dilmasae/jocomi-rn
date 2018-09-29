@@ -3,5 +3,6 @@
     "idCard": "ID Card",
     "Password": "Password",
     "SIGN_IN": "SIGN IN",
+    "LOG_OUT": "log out",
     "signinErrorMessage": "This field is required"    
 }

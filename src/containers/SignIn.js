@@ -19,6 +19,9 @@ import {
 
 import { strings } from '@locales';
 
+import * as actionCreators from '@actions';
+import {connect} from 'react-redux';
+
 class SignIn extends Component {
 
     static navigationOptions = {
@@ -26,8 +29,8 @@ class SignIn extends Component {
     }
 
     state = {
-        idCard: '',
-        password: '',
+        idCard: 'info@jocomi.com',
+        password: 'secret',
         idCardErrorMessage: null,
         passwordErrorMessage: null,
     }
@@ -55,6 +58,9 @@ class SignIn extends Component {
     }
 
     render() {
+
+        const AUTH = this.props.auth;
+        const LOADING = AUTH.loading;
 
         return(
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -110,9 +116,13 @@ class SignIn extends Component {
                     disabled={this.state.idCard.length === 0 || this.state.password.length === 0}
                     title={strings('SIGN_IN')}
                     backgroundColor={Color.grey}
-                    onPress={() => this.props.navigation.navigate('TermsConditionsWelcome')}
+                    onPress={() => {
+                        if(!LOADING) this.props.dispatch(actionCreators.auth_login(this.state));
+                    }}
                     style={Layout.separatorY}
                     buttonStyle={styles.button}
+                    loading={LOADING}
+                    loadingProps={{size: "large"}}
                 />
 
                 <Text style={styles.text}>
@@ -156,4 +166,8 @@ const styles = StyleSheet.create({
 
 })
 
-export default SignIn;
+const mapStateToProps = (state) => ({
+    auth: state.authReducer,
+})
+
+export default connect(mapStateToProps)(SignIn);

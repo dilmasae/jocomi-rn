@@ -4,19 +4,23 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "generate-apk": "cd android && ./gradlew assembleRelease",
+    "install-android": "cd android && ./gradlew assembleRelease && adb install -r app/build/outputs/apk/release/app-release.apk"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "i18n-js": "^3.0.11",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-elements": "^1.0.0-beta5",
     "react-native-i18n": "^2.0.15",
+    "react-native-navigation-actions": "^1.0.4",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "2.6.2",
     "react-navigation-redux-helpers": "2.0.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {

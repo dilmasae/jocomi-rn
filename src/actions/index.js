@@ -1,1 +1,1 @@
-// export * from './tourAction';
+export * from './authAction';
