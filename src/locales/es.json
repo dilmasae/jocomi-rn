@@ -1,7 +1,15 @@
 {
+    "companyName": "Nombre empresa",
+    "Courses": "Cursos",
+    "Documents": "Documentos",
     "FORGET_PASSWORD": "¿Olvidó contraseña?",
     "idCard": "ID Card",
-    "Password": "Password",
-    "SIGN_IN": "REGISTRO",
-    "signinErrorMessage": "Este campo es requerido"
+    "LOG_OUT": "Cerrar sesión",
+    "Password": "Contraseña",
+    "phoneNumber": "Número de teléfono",
+    "SignIn": "Registro",
+    "signinErrorMessage": "Este campo es requerido",
+    "termsConditions": "Aceptar términos y condiciones",
+    "userName": "Nombre usuario",
+    "WELCOME": "BIENVENIDO"  
 }
