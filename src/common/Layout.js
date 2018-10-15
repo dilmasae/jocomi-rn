@@ -3,6 +3,7 @@ const separator = 20;
 
 export default {
 
+    statusListView : 6,
     containerPadding,
 
     container: {
