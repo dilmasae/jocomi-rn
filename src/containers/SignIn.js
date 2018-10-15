@@ -6,9 +6,9 @@ import {
 } from 'react-native';
 
 import { 
-    Layout, 
+    Color,
     IconName,
-    Color
+    Layout, 
 } from '@common';
 
 import { 
@@ -65,7 +65,7 @@ class SignIn extends Component {
         return(
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
-                <Text h3 style={styles.title}>Sign in</Text>
+                <Text h1 style={styles.title}>{strings('SignIn')}</Text>
 
                 <Input
                     label={strings('idCard')}
@@ -114,7 +114,7 @@ class SignIn extends Component {
 
                 <Button
                     disabled={this.state.idCard.length === 0 || this.state.password.length === 0}
-                    title={strings('SIGN_IN')}
+                    title={strings('SignIn').toUpperCase()}
                     backgroundColor={Color.grey}
                     onPress={() => {
                         if(!LOADING) this.props.dispatch(actionCreators.auth_login(this.state));
@@ -141,9 +141,6 @@ const styles = StyleSheet.create({
         backgroundColor: Color.primary,
         width: 300
     },
-    h3: {
-        textAlign: "right"
-    },
     error: {
         color: Color.red,
         marginLeft: 20
@@ -161,7 +158,8 @@ const styles = StyleSheet.create({
     title: {
         textAlign: "left",
         marginLeft: 40,
-        width: "100%"
+        width: "100%",
+        fontSize: 20
     }
 
 })
