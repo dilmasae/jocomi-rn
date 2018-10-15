@@ -5,13 +5,19 @@ import {
     Text,
 } from 'react-native';
 
-import { Layout } from '@common';
+import { 
+    Color,
+    IconName,
+    Layout, 
+} from '@common';
 
 import { 
     Avatar, 
     Button, 
     Icon, 
 } from 'react-native-elements';
+
+import { strings } from '@locales';
 
 const avatarDefault="../media/avatar.png";
 
@@ -76,32 +82,32 @@ class TermsConditionsWelcome2 extends Component {
 
                 </View>
 
-                <Text style={styles.container}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and 
-                scrambled it to make a type specimen book.{"\n"}{"\n"}
-                <Text style={styles.infoValue_}>DOCUMENTS</Text>{"\n"}
-                <Text style={styles.infoValue}>ID CARD</Text>{"\n"}
-                <Text style={styles.infoValue}>NAME</Text>{"\n"}
-                <Text style={styles.infoValue}>LAST NAME</Text>
-                {"\n"}{"\n"}
-                <Text style={styles.infoValue_}>COURSES</Text>{"\n"}
-                <Text style={styles.infoValue}>PRL FONTANERIA</Text>{"\n"}
-                <Text style={styles.infoValue}>PRL CONSTRUCCION</Text>
-                </Text>
-
+                <View style={styles.container}>
+                    <Text style={styles.redaction}>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and 
+                    scrambled it to make a type specimen book.
+                    </Text>
+                    <Text style={styles.info}>{strings('Documents').toUpperCase()}</Text>
+                    <Text style={styles.infoValue}>ID CARD</Text>
+                    <Text style={styles.infoValue}>NAME</Text>
+                    <Text style={styles.infoValue}>LAST NAME</Text>
+                    <Text style={Layout.separatorY}></Text>
+                    <Text style={styles.info}>{strings('Courses').toUpperCase()}</Text>
+                    <Text style={styles.infoValue}>PRL FONTANERIA</Text>
+                    <Text style={styles.infoValue}>PRL CONSTRUCCION</Text>
+                </View>
 
                 <Button
                     icon={
                         <Icon
-                            name='chevron-right'
+                            name={IconName.CHEVRON_RIGHT}
                             size={24}
                             color='white'
                         />
                     }
                     iconRight
-                    title="Accept terms and conditions"
-                    backgroundColor="#FF4242"
+                    title={strings('termsConditions')}
                     onPress={() => this.props.dispatch(actionCreators.accept_terms())}
                     style={Layout.separatorY}
                     buttonStyle={styles.button}
@@ -116,7 +122,7 @@ const styles = StyleSheet.create({
 
     button: {
         borderRadius: 12,
-        backgroundColor: '#9370DB',
+        backgroundColor: Color.primary,
         width: 300
     },
     container: {
@@ -125,31 +131,26 @@ const styles = StyleSheet.create({
         padding: 7,
         borderRadius: 4,
         borderWidth: 1,
-        borderColor: '#d6d7da'
-    },
-    h3: {
-        textAlign: 'right'
+        borderColor: Color.borderGrey
     },
     info: {
-        color: '#9370DB',
-        fontSize: 15
+        fontSize: 18,
+        padding: 5,
+        fontWeight: "bold"
     },
     infoValue: {
         fontSize: 18,
         padding: 5
     },
-    infoValue_: {
-        fontSize: 18,
+    redaction: {
         padding: 5,
-        fontWeight: "bold"
+        textAlign: 'justify'
     },
     text: {
         textAlign: 'center',
         marginTop: 15,
-        color: '#9370DB',
+        color: Color.primary,
         fontSize: 15
-    },
-    title: {
     },
     userInfo: {
         flexDirection: 'row', 

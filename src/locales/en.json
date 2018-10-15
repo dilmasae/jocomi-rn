@@ -1,8 +1,15 @@
 {
+    "companyName": "Company name",
+    "Courses": "Courses",
+    "Documents": "Documents",
     "FORGET_PASSWORD": "Forget Password?",
     "idCard": "ID Card",
+    "LOG_OUT": "Log out",
     "Password": "Password",
-    "SIGN_IN": "SIGN IN",
-    "LOG_OUT": "log out",
-    "signinErrorMessage": "This field is required"    
+    "phoneNumber": "Phone number",
+    "SignIn": "Sign in",
+    "signinErrorMessage": "This field is required",
+    "termsConditions": "Accept terms and conditions",
+    "userName": "User name",
+    "WELCOME": "WELCOME"
 }

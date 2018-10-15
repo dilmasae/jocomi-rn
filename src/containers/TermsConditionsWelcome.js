@@ -5,13 +5,19 @@ import {
     View,
 } from 'react-native';
 
-import { Layout } from '@common';
+import { 
+    Color,
+    IconName,
+    Layout, 
+} from '@common';
 
 import { 
     Avatar, 
     Button, 
     Icon, 
 } from 'react-native-elements';
+
+import { strings } from '@locales';
 
 const avatarDefault="../media/avatar.png";
 
@@ -65,7 +71,7 @@ class TermsConditionsWelcome extends Component {
             
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
-                <Text h3 style={styles.title}>WELCOME</Text>
+                <Text h1 style={styles.title}>{strings('WELCOME')}</Text>
 
                 <Avatar
                     size="medium"
@@ -77,53 +83,55 @@ class TermsConditionsWelcome extends Component {
 
                 <View style={styles.userInfo}>
                     <Icon
-                        name='person'
+                        name={IconName.USER}
                         size={24}
                         color='black'
                     />
-                    <Text style={styles.info}>User name</Text>
+                    <Text style={styles.info}>{strings('userName')}</Text>
                     <Text style={styles.infoValue}>{this.state.userName}</Text>
                 </View>
 
                 <View style={styles.userInfo}>
                     <Icon
-                        name='phone-android'
+                        name={IconName.PHONE}
                         size={24}
                         color='black'
                     />
-                    <Text style={styles.info}>Phone number</Text>
+                    <Text style={styles.info}>{strings('phoneNumber')}</Text>
                     <Text style={styles.infoValue}>{this.state.phoneNumber}</Text>
                 </View>
 
                 <View style={styles.userInfo}>
                     <Icon
-                        name='business'
+                        name={IconName.BUSINESS}
                         size={24}
                         color='black'
                     />
-                    <Text style={styles.info}>Company name</Text>
+                    <Text style={styles.info}>{strings('companyName')}</Text>
                     <Text style={styles.infoValue}>{this.state.companyName}</Text>
                 </View>
 
-                <Text style={styles.container}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and 
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into 
-                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of 
-                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                Aldus PageMaker including versions of Lorem Ipsum.
-                </Text>
+                <View style={styles.container}>
+                    <Text style={styles.redaction}>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and 
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into 
+                    electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of 
+                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
+                    Aldus PageMaker including versions of Lorem Ipsum.
+                    </Text>
+                </View>
+
                 <Button
                     icon={
                         <Icon
-                            name='chevron-right'
+                            name={IconName.CHEVRON_RIGHT}
                             size={24}
                             color='white'
                         />
                     }
                     iconRight
-                    title="Accept terms and conditions"
-                    backgroundColor="#FF4242"
+                    title={strings('termsConditions')}
                     onPress={() => this.props.navigation.navigate('TermsConditionsWelcome2', 
                         {photo:this.state.photo,
                         userName:this.state.userName,
@@ -142,7 +150,7 @@ const styles = StyleSheet.create({
 
     button: {
         borderRadius: 12,
-        backgroundColor: '#9370DB',
+        backgroundColor: Color.primary,
         width: 300
     },
     container: {
@@ -151,27 +159,29 @@ const styles = StyleSheet.create({
         padding: 7,
         borderRadius: 4,
         borderWidth: 1,
-        borderColor: '#d6d7da'
-    },
-    h3: {
-        textAlign: 'right'
+        borderColor: Color.borderGrey
     },
     info: {
-        color: '#9370DB',
+        color: Color.primary,
         fontSize: 15,
-        padding: 5
+        padding: 7
     },
     infoValue: {
         fontSize: 18,
         padding: 5
     },
+    redaction: {
+        padding: 5,
+        textAlign: 'justify'
+    },
     text: {
         textAlign: 'center',
         marginTop: 15,
-        color: '#9370DB',
+        color: Color.primary,
         fontSize: 15
     },
     title: {
+        fontSize: 20
     },
     userInfo: {
         flexDirection: 'row', 
