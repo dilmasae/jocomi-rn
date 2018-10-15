@@ -26,8 +26,10 @@ export default (state = INITIAL_STATE, action) => {
             }
 
         case actionType.LOG_OUT:
+            const TERMS = state.terms;
             return {
                 ...INITIAL_STATE,
+                terms : TERMS
             }
 
         case actionType.AUTH_CHANGE_VALUE:
