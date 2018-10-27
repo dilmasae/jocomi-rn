@@ -44,4 +44,16 @@ export default class Api {
         });
     }
 
+    logout() {
+        return this.axios.post(`/auth/logout`);
+    }
+
+    me() {
+        return this.axios.post(`/auth/logout`);
+    }
+
+    fetchDocuments() {
+        return this.axios.get(`/documents`);
+    }
+
 }
