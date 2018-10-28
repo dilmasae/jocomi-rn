@@ -12,6 +12,11 @@ export default {
         paddingHorizontal: containerPadding
     },
 
+    containerY: {
+        flex: 1,
+        paddingVertical: separator,
+    },
+
     separatorY: {
         marginTop: separator,
     }

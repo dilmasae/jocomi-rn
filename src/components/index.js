@@ -1,3 +1,1 @@
-// import TourCard from './TourCard';
-
-// export {TourCard};
+export * from './AddButton';

@@ -10,4 +10,5 @@ export default {
     PASSWORD: Platform.OS === 'ios' ? 'vpn-key' : 'vpn-key',
     PHONE: Platform.OS === 'ios' ? 'phone-android' : 'phone-android',
     USER: Platform.OS === 'ios' ? 'person' : 'person',
+    ADD: Platform.OS === 'ios' ? 'plus' : 'plus',
 }

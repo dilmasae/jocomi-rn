@@ -2,6 +2,9 @@ import React from 'react';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { AddButton } from '@components';
+import { Color } from '@common';
+
 /*
  * CONTAINERS
  */
@@ -22,6 +25,7 @@ import {
     createSwitchNavigator, 
     createStackNavigator, 
     createBottomTabNavigator,
+    NavigationActions,
 } from 'react-navigation';
 
 import { AppNavigator } from 'react-native-navigation-actions';
@@ -45,51 +49,56 @@ const SettingStack = createStackNavigator({
 
 const TabStack = createBottomTabNavigator(
     {
-        HomeStack: HomeStack,
-        SearchStack: HomeStack,
-        CartStack: HomeStack,
-        SettingsStack: SettingStack,
+        HomeStack: {
+            screen: HomeStack,
+            navigationOptions: ({ navigation }) => ({
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Ionicons name={IconName.HOME} size={24} color={tintColor} />
+                )
+            })
+        },
+        SearchStack: {
+            screen: HomeStack,
+            navigationOptions: ({ navigation }) => ({
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Ionicons name={IconName.SEARCH} size={24} color={tintColor} />
+                )
+            })
+        },
+        Adding: {
+            screen: () => null,
+            navigationOptions: () => ({
+                tabBarIcon: <AddButton />
+            })
+        },
+        CartStack: {
+            screen: HomeStack,
+            navigationOptions: ({ navigation }) => ({
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Ionicons name={IconName.CART} size={24} color={tintColor} />
+                )
+            })
+        },
+        SettingsStack: {
+            screen: SettingStack,
+            navigationOptions: ({ navigation }) => ({
+                tabBarIcon: ({ focused, tintColor }) => (
+                    <Ionicons name={IconName.SETTINGS} size={24} color={tintColor} />
+                )
+            })
+        }
     },
     {
-        navigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused, tintColor }) => {
-                
-                const { routeName } = navigation.state;
-                
-                let iconName;
-                
-                switch(routeName) {
-                    case 'HomeStack':
-                        iconName = IconName.HOME; 
-                        break;
-                    case 'SearchStack':
-                        iconName = IconName.SEARCH;    
-                        break;
-                    case 'CartStack':
-                        iconName = IconName.CART;    
-                        break;
-                    case 'SettingsStack':
-                        iconName = IconName.SETTINGS;
-                        break;
-                    default:
-                        break;
-                }
-    
-                // You can return any component that you like here! We usually use an
-                // icon component from react-native-vector-icons
-                return <Ionicons name={iconName} size={25} color={tintColor} />;
-            },
-        }),
-
         tabBarOptions: {
-            activeTintColor: 'tomato',
+            activeTintColor: '#F8F8F8',
+            inactiveTintColor: '#586589',
             activeBackgroundColor: 'transparent',
-            inactiveTintColor: 'gray',
             inactiveBackgroundColor: 'transparent',
             showLabel: false,
+            animationEnabled: true,
             style: {
-                backgroundColor: 'white',
-                // borderTopColor: 'transparent',
+                backgroundColor: '#212121',
+                borderTopColor: '#333',
             },
             // labelStyle: {
                 //fontSize: 12,
@@ -106,6 +115,16 @@ const AuthStack = createStackNavigator({
     TermsConditionsWelcome2: TermsConditionsWelcome2,
 });
 
+const defaultGetStateForAction = TabStack.router.getStateForAction;
+
+TabStack.router.getStateForAction = (action, state) => {
+    if (action.type === NavigationActions.NAVIGATE && action.routeName === 'Adding') {
+        return null;
+    }
+
+    return defaultGetStateForAction(action, state);
+}
+
 const SwitchNavigator = createSwitchNavigator(
     {
         AuthLoading: AuthLoadingScreen,
@@ -116,12 +135,12 @@ const SwitchNavigator = createSwitchNavigator(
         /* The header config */
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#f4511e',
+                backgroundColor: '#171F33',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
                 fontWeight: 'bold',
-            },
+            }
         },
     }
 );
