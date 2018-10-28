@@ -34,7 +34,8 @@ import { AppNavigator } from 'react-native-navigation-actions';
  * REDUX
  */
 import { Provider } from 'react-redux';
-import store from './store';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 /***************************************************************/
 
 import { IconName } from '@common';
@@ -150,7 +151,9 @@ const AppNav = AppNavigator(SwitchNavigator);
 const Routes = () => {
     return(
         <Provider store={store}>
-            <AppNav />
+            <PersistGate loading={null} persistor={persistor}>
+                <AppNav />
+            </PersistGate>
         </Provider>
     )
 }

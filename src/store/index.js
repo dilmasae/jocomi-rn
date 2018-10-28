@@ -6,4 +6,7 @@ import {persistStore} from 'redux-persist';
 let store = createStore(allReducers, applyMiddleware(ReduxThunk));
 let persistor = persistStore(store);
 
-export default store;
+export {
+    store,
+    persistor,
+};
