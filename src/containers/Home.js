@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
 import {
     View,
-    Text,
+    FlatList
 } from 'react-native';
 
 import {
-    Constant,
     Layout,
     Color,
 } from '@common';
 
 import * as actionCreators from '@actions';
 import { connect } from 'react-redux';
-import { ListItem } from 'react-native-elements';
 
 import {ItemDocs} from '@components';
 
@@ -22,32 +20,90 @@ class Home extends Component {
         header: null
     }
 
+    state = {
+        docs: []
+    }
+
+    getDocs() {
+
+        const docs = [
+            {
+                id: "1",
+                date: "2018/12/12",
+                startTime: "8:00",
+                endTime: "9:00",
+                place: "Hotel Riu Place Oasis",
+                work: "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla",
+            },
+            {
+                id: "2",
+                date: "2018/13/12",
+                startTime: "8:00",
+                endTime: "9:00",
+                place: "Hotel Riu Place Oasis",
+                work: "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla",
+            },
+            {
+                id: "3",
+                date: "2018/13/12",
+                startTime: "9:00",
+                endTime: "10:00",
+                place: "Hotel Riu Place Oasis",
+                work: "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla",
+            },
+            {
+                id: "4",
+                date: "2018/12/12",
+                startTime: "8:00",
+                endTime: "9:00",
+                place: "Hotel Riu Place Oasis",
+                work: "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla",
+            },
+            {
+                id: "5",
+                date: "2018/13/12",
+                startTime: "8:00",
+                endTime: "9:00",
+                place: "Hotel Riu Place Oasis",
+                work: "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla",
+            },
+            {
+                id: "6",
+                date: "2018/13/12",
+                startTime: "9:00",
+                endTime: "10:00",
+                place: "Hotel Riu Place Oasis",
+                work: "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla",
+            }
+        ]
+
+        this.setState({docs})
+
+    }
+
+    componentDidMount() {
+
+        //posteriormente se hara llamada base datos
+        //this.getDocs().then(docs => this.setState({ docs }))
+
+        this.getDocs()
+
+    }
+
+    renderItem = ({item}) => 
+        <View style={[Layout.containerY, { backgroundColor: Color.black }]}>
+            <ItemDocs data={item}/>
+        </View>
+
     render() {
 
-        const date = "2018/12/12";
-        const startTime = "8:00";
-        const endTime = "9:00";
-        const place = "Hotel Riu Place Oasis";
-        const work = "Trabajo fontaneria blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla blablablablabla";
-        
-        const data = {
-            date,
-            startTime,
-            endTime,
-            place,
-            work
-        }
-        
+        const {docs} = this.state
+        return <FlatList 
+                    data={docs}
+                    renderItem={this.renderItem} 
+                    keyExtractor={item => item.id}
+                />
 
-        return (
-
-            
-            <View style={[Layout.containerY, { backgroundColor: Color.black }]}>
-
-                <ItemDocs data={data}/> 
-
-            </View>
-        )
     }
 
 }
